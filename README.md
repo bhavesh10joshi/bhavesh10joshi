@@ -11,7 +11,7 @@ I'm a Full Stack Developer with a passion for turning coffee into code. Whether 
 ---
 
 ### 🧐 What I'm Up To
-* **🔭 Currently Working On:** Building a real-time chat application (LiveLink) and a Sci-Fi novel!
+* **🔭 Currently Working On:** Working in on building some cool , industry-ready projects!
 * **🌱 Learning:** Deep diving into **AI/ML** and **DevOps** pipelines.
 * **⚔️ Grinding:** Mastering Data Structures & Algorithms (DSA) in **C++**.
 * **💬 Ask Me About:** The MERN stack, System Design, or why Robert Baratheon is the best character.
