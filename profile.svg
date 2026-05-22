@@ -1,0 +1,309 @@
+<svg fill="none" width="100%" height="670" viewBox="0 0 680 670" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap');
+
+        @keyframes scan {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(670px); }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { text-shadow: 0 0 8px #00e5ff, 0 0 20px #00e5ff44; }
+          50% { text-shadow: 0 0 16px #00e5ff, 0 0 40px #00e5ffaa, 0 0 60px #00e5ff44; }
+        }
+        @keyframes flicker {
+          0%, 96%, 100% { opacity: 1; }
+          97% { opacity: 0.4; }
+          98% { opacity: 1; }
+          99% { opacity: 0.6; }
+        }
+        @keyframes grid-move {
+          from { background-position: 0 0; }
+          to { background-position: 0 60px; }
+        }
+        @keyframes bar-fill {
+          from { width: 0; }
+        }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blink {
+          50% { opacity: 0; }
+        }
+
+        .container {
+          font-family: 'Share Tech Mono', monospace;
+          background: #050a0f;
+          color: #c8e8f0;
+          padding: 32px 28px 40px;
+          position: relative;
+          overflow: hidden;
+          box-sizing: border-box;
+          height: 670px;
+        }
+
+        .grid-bg {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+          background-size: 40px 40px;
+          animation: grid-move 3s linear infinite;
+          pointer-events: none;
+        }
+
+        .scan-line {
+          position: absolute;
+          left: 0; right: 0; top: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, rgba(0,229,255,0.15), transparent);
+          animation: scan 6s linear infinite;
+          pointer-events: none;
+        }
+
+        .corner {
+          position: absolute;
+          width: 20px; height: 20px;
+          border-color: #00e5ff;
+          border-style: solid;
+          opacity: 0.5;
+        }
+        .corner-tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+        .corner-tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+        .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+        .corner-br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+        .bat-logo {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 8px;
+        }
+
+        .name-title {
+          font-family: 'Orbitron', monospace;
+          font-size: 28px;
+          font-weight: 900;
+          text-align: center;
+          color: #00e5ff;
+          letter-spacing: 6px;
+          text-transform: uppercase;
+          animation: pulse-glow 3s ease-in-out infinite, flicker 8s infinite;
+          margin: 0 0 4px;
+        }
+
+        .subtitle {
+          font-size: 11px;
+          text-align: center;
+          color: #00e5ff88;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          margin-bottom: 28px;
+          animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .divider {
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #00e5ff44, #00e5ff, #00e5ff44, transparent);
+          margin: 0 0 28px;
+          animation: fade-up 0.5s ease 1s both;
+        }
+
+        .section {
+          margin-bottom: 24px;
+          animation: fade-up 0.7s ease var(--d, 1.2s) both;
+        }
+
+        .section-label {
+          font-family: 'Orbitron', monospace;
+          font-size: 9px;
+          letter-spacing: 3px;
+          color: #00e5ff;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .section-label::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: linear-gradient(90deg, #00e5ff44, transparent);
+        }
+
+        .whoami-block {
+          background: rgba(0,229,255,0.04);
+          border: 1px solid rgba(0,229,255,0.15);
+          border-left: 2px solid #00e5ff;
+          padding: 14px 16px;
+          font-size: 12px;
+          line-height: 1.8;
+          border-radius: 0 4px 4px 0;
+        }
+        .k { color: #00e5ff88; }
+        .v { color: #e0f7fa; }
+        .s { color: #80cbc4; }
+        .arr-c { color: #4dd0e1; }
+        .cm { color: #00e5ff44; font-style: italic; }
+
+        .stack-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+        .stack-item {
+          background: rgba(0,229,255,0.05);
+          border: 1px solid rgba(0,229,255,0.12);
+          padding: 8px 12px;
+          font-size: 11px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .stack-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: #00e5ff;
+          box-shadow: 0 0 6px #00e5ff;
+          flex-shrink: 0;
+        }
+        .stack-dot.amber { background: #ffb300; box-shadow: 0 0 6px #ffb300; }
+        .stack-dot.teal { background: #26c6da; box-shadow: 0 0 6px #26c6da; }
+        .stack-dot.purple { background: #ab47bc; box-shadow: 0 0 6px #ab47bc; }
+
+        .stat-bar-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+          font-size: 11px;
+        }
+        .stat-label { width: 90px; color: #00e5ff88; flex-shrink: 0; }
+        .bar-track {
+          flex: 1;
+          height: 4px;
+          background: rgba(0,229,255,0.1);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+        .bar-fill {
+          height: 100%;
+          border-radius: 2px;
+          animation: bar-fill 1.5s cubic-bezier(0.16, 1, 0.3, 1) var(--d2, 1.5s) both;
+        }
+        .bar-fill.cyan { background: linear-gradient(90deg, #00acc1, #00e5ff); box-shadow: 0 0 6px #00e5ff44; }
+        .bar-fill.amber { background: linear-gradient(90deg, #f57f17, #ffb300); box-shadow: 0 0 6px #ffb30044; }
+        .bar-fill.teal { background: linear-gradient(90deg, #00695c, #26c6da); box-shadow: 0 0 6px #26c6da44; }
+        .stat-val { width: 32px; text-align: right; color: #00e5ff; }
+
+        .terminal-line {
+          font-size: 11px;
+          color: #80cbc4;
+          line-height: 2;
+          padding: 10px 14px;
+          background: rgba(0,0,0,0.3);
+          border: 1px solid rgba(0,229,255,0.08);
+        }
+        .prompt { color: #00e5ff; }
+        .cmd { color: #e0f7fa; }
+        .out { color: #00e5ff66; }
+
+        .cursor {
+          display: inline-block;
+          width: 8px; height: 12px;
+          background: #00e5ff;
+          margin-left: 2px;
+          vertical-align: middle;
+          animation: blink 1s step-end infinite;
+        }
+      </style>
+
+      <div class="container">
+        <div class="grid-bg"></div>
+        <div class="scan-line"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="bat-logo">
+          <svg width="80" height="36" viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10 C80 10, 55 30, 20 25 C35 45, 30 65, 50 70 C60 72, 70 60, 80 62 L100 80 L120 62 C130 60, 140 72, 150 70 C170 65, 165 45, 180 25 C145 30, 120 10, 100 10Z" fill="#00e5ff" fill-opacity="0.9"/>
+            <path d="M100 35 C90 35, 82 55, 80 62 L100 80 L120 62 C118 55, 110 35, 100 35Z" fill="#050a0f"/>
+            <path d="M20 25 C35 45, 30 65, 50 70 C40 50, 45 30, 20 25Z" fill="#050a0f" fill-opacity="0.5"/>
+            <path d="M180 25 C155 30, 160 50, 150 70 C170 65, 165 45, 180 25Z" fill="#050a0f" fill-opacity="0.5"/>
+          </svg>
+        </div>
+
+        <h1 class="name-title">Bhavesh Joshi</h1>
+        <p class="subtitle">Full Stack Developer  /  MERN Stack  /  Builder</p>
+        <div class="divider"></div>
+
+        <div class="section" style="--d: 1.0s">
+          <div class="section-label">// identity.ts</div>
+          <div class="whoami-block">
+            <span class="k">const</span> <span class="v">bhavesh</span> <span class="arr-c">=</span> {<br/>
+              <span class="k">location:</span>   <span class="s">"Uttarakhand, India"</span>,<br/>
+              <span class="k">degree:</span>    <span class="s">"B.Tech CS @ BIAS (2027)"</span>,<br/>
+              <span class="k">building:</span>  <span class="s">"industry-ready projects"</span>,<br/>
+              <span class="k">learning:</span>  [<span class="s">"AI/ML"</span>, <span class="s">"DevOps"</span>, <span class="s">"Next.js"</span>],<br/>
+              <span class="k">grinding:</span>  <span class="s">"DSA in C++"</span>,<br/>
+              <span class="k">secret:</span>    <span class="s">"writing a Sci-Fi novel"</span> <span class="cm">// chapter ?</span><br/>
+            }
+          </div>
+        </div>
+
+        <div class="section" style="--d: 1.3s">
+          <div class="section-label">// stack --list</div>
+          <div class="stack-grid">
+            <div class="stack-item"><div class="stack-dot"></div>React / Next.js</div>
+            <div class="stack-item"><div class="stack-dot amber"></div>Node / Express</div>
+            <div class="stack-item"><div class="stack-dot teal"></div>TypeScript</div>
+            <div class="stack-item"><div class="stack-dot purple"></div>MongoDB / PostgreSQL</div>
+            <div class="stack-item"><div class="stack-dot"></div>Socket.io</div>
+            <div class="stack-item"><div class="stack-dot amber"></div>Tailwind CSS</div>
+            <div class="stack-item"><div class="stack-dot teal"></div>Prisma ORM</div>
+            <div class="stack-item"><div class="stack-dot purple"></div>JWT / Zod</div>
+          </div>
+        </div>
+
+        <div class="section" style="--d: 1.6s">
+          <div class="section-label">// system.diagnostics</div>
+          <div class="stat-bar-row">
+            <span class="stat-label">Frontend</span>
+            <div class="bar-track"><div class="bar-fill cyan" style="width:88%; --d2: 1.7s"></div></div>
+            <span class="stat-val">88%</span>
+          </div>
+          <div class="stat-bar-row">
+            <span class="stat-label">Backend</span>
+            <div class="bar-track"><div class="bar-fill amber" style="width:80%; --d2: 1.9s"></div></div>
+            <span class="stat-val">80%</span>
+          </div>
+          <div class="stat-bar-row">
+            <span class="stat-label">Databases</span>
+            <div class="bar-track"><div class="bar-fill teal" style="width:74%; --d2: 2.1s"></div></div>
+            <span class="stat-val">74%</span>
+          </div>
+          <div class="stat-bar-row">
+            <span class="stat-label">DSA / C++</span>
+            <div class="bar-track"><div class="bar-fill cyan" style="width:65%; --d2: 2.3s"></div></div>
+            <span class="stat-val">65%</span>
+          </div>
+        </div>
+
+        <div class="section" style="--d: 1.9s">
+          <div class="section-label">// ps aux | grep bhavesh</div>
+          <div class="terminal-line">
+            <span class="prompt">❯</span> <span class="cmd">writing-scifi-novel</span>   <span class="out">chapter ??? in progress...</span><br/>
+            <span class="prompt">❯</span> <span class="cmd">binge-watching-shows</span>  <span class="out">always running</span><br/>
+            <span class="prompt">❯</span> <span class="cmd">running-on-track</span>     <span class="out">cache cleared ✓</span><br/>
+            <span class="prompt">❯</span> <span class="cmd">baratheon-is-goat</span>    <span class="out">daemon active</span><span class="cursor"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
